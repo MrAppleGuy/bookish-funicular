@@ -1,0 +1,48 @@
+import graph.Edge;
+import graph.Node;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        HashMap<Integer, Node> nodeHashMap = new HashMap<Integer, Node>();
+        Utility utility = new Utility();
+
+        try
+        {
+            ArrayList<String[]> df = utility.readCsv2DataFrame("C:\\Users\\VeryC\\IdeaProjects\\graph\\src\\com\\company\\Node.csv");
+            for (String[] nodeAttributes : df)
+            {
+                int id = Integer.parseInt(nodeAttributes[0].trim());
+                String name = nodeAttributes[1].trim();
+                Node node = new Node(id, name);
+                nodeHashMap.put(node.id, node);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        try
+        {
+            ArrayList<String[]> df = utility.readCsv2DataFrame("C:\\Users\\VeryC\\IdeaProjects\\graph\\src\\com\\company\\Edge.csv");
+            for (String[] edgeAttributes : df)
+            {
+                int fromNodeId = Integer.parseInt(edgeAttributes[0].trim());
+                int toNodeId = Integer.parseInt(edgeAttributes[1].trim());
+                Node fromNode = nodeHashMap.get(fromNodeId);
+                Node toNode = nodeHashMap.get(toNodeId);
+                Edge edge = new Edge(fromNode, toNode);
+                toNode.addInEdge(edge);
+                fromNode.addOutEdge(edge);
+                System.out.println(edge);
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+}
