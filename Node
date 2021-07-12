@@ -1,0 +1,31 @@
+import java.util.ArrayList;
+import java.util.List;
+
+public class Node
+{
+    public int id;
+    public String name;
+    public List<Edge> inEdges = new ArrayList<>();
+    public List<Edge> outEdges = new ArrayList<>();
+
+    public Node (int id, String name)
+    {
+        this.id = id;
+        this.name = name;
+    }
+
+    public void addInEdge (Edge edge)
+    {
+        inEdges.add(edge);
+    }
+
+    public void addOutEdge (Edge edge)
+    {
+        outEdges.add(edge);
+    }
+
+    public String toString()
+    {
+        return id + " $ " + name;
+    }
+}
