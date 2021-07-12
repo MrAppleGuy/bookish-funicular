@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Utility
+{
+    public ArrayList<String[]> readCsv2DataFrame(String filePath) throws FileNotFoundException, IOException
+    {
+        ArrayList<String[]> dataFrame = new ArrayList<String[]>();
+        FileReader csvFr = new FileReader(filePath);
+        BufferedReader br = new BufferedReader(csvFr);
+        String line;
+        br.readLine(); // need to ignore CSV file header
+        while ((line = br.readLine()) != null)
+        {
+            String[] attributes = line.split(",");
+            dataFrame.add(attributes);
+        }
+        return dataFrame;
+    }
+}
