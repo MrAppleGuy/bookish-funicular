@@ -12,7 +12,7 @@ public class Main
 
         try
         {
-            ArrayList<String[]> df = utility.readCsv2DataFrame("C:\\Users\\VeryC\\IdeaProjects\\graph\\src\\com\\company\\Node.csv");
+            ArrayList<String[]> df = utility.readCsv2DataFrame("csv location here");
             for (String[] nodeAttributes : df)
             {
                 int id = Integer.parseInt(nodeAttributes[0].trim());
@@ -27,7 +27,7 @@ public class Main
         }
         try
         {
-            ArrayList<String[]> df = utility.readCsv2DataFrame("C:\\Users\\VeryC\\IdeaProjects\\graph\\src\\com\\company\\Edge.csv");
+            ArrayList<String[]> df = utility.readCsv2DataFrame("csv location here");
             for (String[] edgeAttributes : df)
             {
                 int fromNodeId = Integer.parseInt(edgeAttributes[0].trim());
